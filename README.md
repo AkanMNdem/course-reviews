@@ -1,65 +1,83 @@
-# Wordle Game Copy
+# Course Reviews Application
 
 ## Overview
-Wordle Game Copy is a Java-based recreation of the popular Wordle game. This project replicates the classic word puzzle, allowing players to guess a five-letter word within a limited number of attempts. It provides both a graphical user interface (GUI) and a command-line interface for gameplay.
+
+The Course Reviews Application is a Java-based program designed to facilitate course review submissions and retrievals for academic institutions. It allows students to create accounts, log in, submit reviews for courses, and view aggregated reviews.
 
 ## Features
-- **Graphical User Interface:** Developed with JavaFX for a user-friendly experience.
-- **Command-Line Interface:** Supports text-based gameplay for simplicity.
-- **Dynamic Word Selection:** Random word generation ensures varied gameplay sessions.
-- **Game Feedback:** Provides visual and textual feedback on guesses.
+
+- **User Account Management**: Create and log into accounts.
+- **Course Reviews**: Submit textual reviews and numerical ratings for specific courses.
+- **Review Retrieval**: View all reviews for a course along with its average rating.
+- **Database Integration**: Stores data securely using SQLite.
 
 ## Project Structure
-### Core Components
-- **`WordleApplication`:** Entry point for the JavaFX GUI application.
-- **`WordleController`:** Manages GUI interactions and updates.
-- **`Wordle`:** Interface defining core game logic and mechanics.
-- **`CommandLineWordle`:** Enables gameplay through the command line.
-- **`WordleDictionary`:** Handles the word list and dictionary operations.
 
-### Test Suite
-- Comprehensive unit tests included to validate core game functionalities using JUnit.
+- **Main**: Entry point for the application.
+- **UIHandler**: Manages user interactions and flows (e.g., login, review submissions, viewing reviews).
+- **Student**: Represents user accounts.
+- **Course**: Defines course details (e.g., department and catalog number).
+- **Review**: Stores review text and ratings.
+- **ReviewsDatabaseManager**: Handles database connections, queries, and table management.
+
+### Database Tables
+
+1. **Students**:
+   - ID (Primary Key)
+   - Username
+   - Password
+2. **Courses**:
+   - ID (Primary Key)
+   - Department
+   - Catalog Number
+3. **Reviews**:
+   - ID (Primary Key)
+   - StudentID (Foreign Key)
+   - CourseID (Foreign Key)
+   - Review (Text)
+   - Rating (Integer)
 
 ## Technologies Used
-- **Java:** Core language for logic and mechanics.
-- **JavaFX:** Used for the graphical interface.
-- **JUnit:** For testing game logic and ensuring stability.
+
+- **Java**: Core programming language.
+- **SQLite**: Lightweight database for persistent data storage.
 
 ## How to Run
+
 ### Prerequisites
-- Java Development Kit (JDK) and JavaFX installed.
+
+Ensure that Java Development Kit (JDK) and SQLite are installed on your system.
 
 ### Steps
-1. **Clone the repository:**
+
+1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/AkanMNdem/Wordle-Game-Copy.git
-   cd Wordle-Game-Copy
+   git clone https://github.com/AkanMNdem/course-reviews.git
+   cd course-reviews/hw7-coursereview-xaa8tq-faf4xj-rqd3jkx
+   ```
+2.	Compile and Run the Project:
+   ```bash
+   javac -d . src/main/java/edu/virginia/cs/hw7/*.java
+   java edu.virginia.cs.hw7.Main
    ```
 
-2. **Compile the project:**
-   Use your favorite Java IDE or a command-line build tool.
+## How to Use
 
-3. **Run the game:**
-   - **GUI Mode:**
-     ```bash
-     java -jar WordleGame.jar
-     ```
-   - **Command-Line Mode:**
-     ```bash
-     java edu.virginia.cs.wordle.CommandLineWordle
-     ```
+	1.	Creating an Account:
+	•	Follow the prompts to create a new account by providing a username and password.
+	2.	Logging In:
+	•	Use your credentials to log into the application.
+	3.	Submitting a Review:
+	•	Enter the course details (e.g., “BIOL 2200”).
+	•	Provide a textual review and rate the course on a scale of 1-5.
+	4.	Viewing Reviews:
+	•	Search for a course by its department and catalog number.
+	•	View reviews and the course’s average rating.
 
-## How to Play
+## Notes
 
-1. **GUI Mode:**
-   - Start the application and interact via the provided graphical interface.
-
-2. **Command-Line Mode:**
-   - Guess a five-letter word based on the feedback provided after each attempt.
-   - Continue guessing until the word is revealed or attempts are exhausted.
-
-## Note
-This project is for educational purposes only and showcases skills in Java development, GUI design, and algorithm implementation.
+This project demonstrates skills in Java development, SQLite integration, and user interface design. The application currently runs in a terminal environment for simplicity.
 
 ## License
-This project does not include an open-source license and is intended for personal and educational use only.
+
+This project is for educational purposes and does not include an open-source license.
